@@ -8,7 +8,7 @@ import { User } from "./users/users.entity"
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: [`.env.stage.dev`], //comment
+      // envFilePath: [`.env.stage.dev`], //comment
       validationSchema: configValidationSchema,
     }),
     TypeOrmModule.forRootAsync({
