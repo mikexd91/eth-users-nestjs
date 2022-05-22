@@ -8,7 +8,7 @@ import { User } from "./users/users.entity"
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: [`.env.stage.dev`], //comment
+      // envFilePath: [`.env.stage.dev`], //comment
       validationSchema: configValidationSchema,
     }),
     TypeOrmModule.forRootAsync({
@@ -18,17 +18,17 @@ import { User } from "./users/users.entity"
         type: 'postgres',
         autoLoadEntities: true,
         synchronize: true,
-        // url: configService.get('DATABASE_URL'),
-        host: configService.get('DB_HOST'),
-        username: configService.get('DB_USERNAME'),
-        password: configService.get('DB_PASSWORD'),
-        database: configService.get('DB_DATABASE'),
-        // ssl: true,
-        // extra: {
-        //   ssl: {
-        //     rejectUnauthorized: true,
-        //   },
-        // },
+        url: configService.get('DATABASE_URL'),
+        // host: configService.get('DB_HOST'),
+        // username: configService.get('DB_USERNAME'),
+        // password: configService.get('DB_PASSWORD'),
+        // database: configService.get('DB_DATABASE'),
+        ssl: true,
+        extra: {
+          ssl: {
+            rejectUnauthorized: true,
+          },
+        },
       }),
     }),
     UsersModule],
